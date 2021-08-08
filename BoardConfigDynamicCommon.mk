@@ -1,4 +1,4 @@
-# Copyright (C) 2021 The OmniROM Project
+# Copyright (C) 2021 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
 # product configuration (apps).
 #
 
-COMMON_PATH := device/motorola/dynamic_common
+COMMON_PATH := device/motorola/dynamic-common
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RECOVERY := false
@@ -82,7 +82,7 @@ BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
 
-#include vendor/omni/sepolicy/sepolicy.mk
+# Selinux
 include device/qcom/sepolicy/SEPolicy.mk
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/public
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private

@@ -25,12 +25,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Prebuilt
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/motorola/dynamic_common/prebuilt/product,product) \
-    $(call find-copy-subdir-files,*,device/motorola/dynamic_common/prebuilt/root,recovery/root) \
-    $(call find-copy-subdir-files,*,device/motorola/dynamic_common/prebuilt/permissions,product/etc/permissions) \
-    $(call find-copy-subdir-files,*,device/motorola/dynamic_common/prebuilt/system,system) \
-    $(call find-copy-subdir-files,*,device/motorola/dynamic_common/prebuilt/permissions,system/etc/permissions) \
-    $(call find-copy-subdir-files,*,device/motorola/dynamic_common/prebuilt/ramdisk,ramdisk)
+    $(call find-copy-subdir-files,*,device/motorola/dynamic-common/prebuilt/product,product) \
+    $(call find-copy-subdir-files,*,device/motorola/dynamic-common/prebuilt/root,recovery/root) \
+    $(call find-copy-subdir-files,*,device/motorola/dynamic-common/prebuilt/permissions,product/etc/permissions) \
+    $(call find-copy-subdir-files,*,device/motorola/dynamic-common/prebuilt/system,system) \
+    $(call find-copy-subdir-files,*,device/motorola/dynamic-common/prebuilt/permissions,system/etc/permissions) \
+    $(call find-copy-subdir-files,*,device/motorola/dynamic-common/prebuilt/ramdisk,ramdisk)
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -67,7 +67,7 @@ PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
 
 PRODUCT_PACKAGES += \
-    omni_charger_res_images \
+    charger_res_images \
     animation.txt \
     font_charger.png
 
@@ -88,13 +88,6 @@ PRODUCT_PACKAGES +=  \
     libbtconfigstore \
     libbluetooth_qti
 
-# FM
-PRODUCT_PACKAGES += \
-    libqcomfm_jni \
-    qcom.fmradio
-
-PRODUCT_BOOT_JARS += qcom.fmradio
-
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     LiveWallpapers \
@@ -104,7 +97,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    SnapdragonCamera2
+    Snap
 
 # HIDL
 PRODUCT_PACKAGES += \
@@ -168,14 +161,14 @@ PRODUCT_PACKAGES += \
 
 # Video seccomp policy files
 PRODUCT_COPY_FILES += \
-    device/motorola/dynamic_common/seccomp/codec2.software.ext.policy:$(TARGET_COPY_OUT)/etc/seccomp_policy/codec2.software.ext.policy
+    device/motorola/dynamic-common/seccomp/codec2.software.ext.policy:$(TARGET_COPY_OUT)/etc/seccomp_policy/codec2.software.ext.policy
 
 PRODUCT_SYSTEM_SERVER_JARS += \
     moto-ims-ext \
     moto-telephony
 
-TARGET_FS_CONFIG_GEN := device/motorola/dynamic_common/config.fs
+TARGET_FS_CONFIG_GEN := device/motorola/dynamic-common/config.fs
 
 $(call inherit-product, build/make/target/product/gsi_keys.mk)
 
-$(call inherit-product-if-exists, vendor/motorola/dynamic_common/dynamic_common-vendor.mk)
+$(call inherit-product, vendor/motorola/dynamic_common/dynamic_common-vendor.mk)

@@ -1,4 +1,4 @@
-# Copyright (C) 2021 The OmniROM Project
+# Copyright (C) 2021 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,21 +19,11 @@
 # product configuration (apps).
 #
 
-VENDOR_EXCEPTION_PATHS := dot \
-    motorola \
-    gapps \
-    microg
-
-# Sample: This is where we'd set a backup provider if we had one
-# $(call inherit-product, device/sample/products/backup_overlay.mk)
+# Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Get the prebuilt list of APNs
-#$(call inherit-product, vendor/dot/config/gsm.mk)
-
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
-
+# Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_BUILD_PRODUCT_IMAGE  := true
@@ -51,16 +41,17 @@ TARGET_NO_RECOVERY := false
 BOARD_BUILD_RETROFIT_DYNAMIC_PARTITIONS_OTA_PACKAGE := false
 BOARD_USES_RECOVERY_AS_BOOT := false
 
+# A/B
 AB_OTA_UPDATER := true
 
+# Overlays
 DEVICE_PACKAGE_OVERLAYS += device/motorola/dynamic_common/overlay/device
-#DEVICE_PACKAGE_OVERLAYS += vendor/dot/overlay/CarrierConfig
 
-# Inherit from our custom product configuration
+# Inherit some common Lineage stuff.
 $(call inherit-product, vendor/dot/config/common.mk)
 
 # Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/motorola/dynamic_common/dynamic_common.mk)
+$(call inherit-product, device/motorola/dynamic-common/dynamic-common.mk)
 
 PRODUCT_PRODUCT_PROPERTIES += \
     vendor.camera.aux.packagelist=com.android.settings,com.motorola.camera2,com.motorola.camera3
