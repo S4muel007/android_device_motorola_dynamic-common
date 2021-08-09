@@ -45,7 +45,7 @@ BOARD_USES_RECOVERY_AS_BOOT := false
 AB_OTA_UPDATER := true
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += device/motorola/dynamic_common/overlay/device
+DEVICE_PACKAGE_OVERLAYS += device/motorola/dynamic-common/overlay/device
 
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/dot/config/common.mk)
