@@ -17,7 +17,7 @@
 set -e
 
 VENDOR=motorola
-DEVICE=dynamic_common
+DEVICE=dynamic-common
 
 INITIAL_COPYRIGHT_YEAR=2021
 

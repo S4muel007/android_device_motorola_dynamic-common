@@ -17,7 +17,7 @@
 set -e
 
 VENDOR=motorola
-DEVICE=dynamic_common
+DEVICE=dynamic-common
 
 # Load extractutils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
